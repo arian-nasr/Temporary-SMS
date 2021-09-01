@@ -19,19 +19,6 @@ def read_messages_from_database(table):
     messages.reverse()
     return messages
 
-#('id, inuse, timeremaining, accesstoken')
-def is_in_use(table, id):
-    conn = create_connection(dbname)
-    data = []
-    with conn:
-        cur = conn.cursor()
-        cur.execute("""SELECT inuse FROM """+table+""" WHERE id='"""+id+"""'""")
-        data = cur.fetchone()
-    if (data[0] == 'true'):
-        return True
-    else:
-        return False
-
 def read_availability_from_database(table):
     conn = create_connection(dbname)
     data = []
